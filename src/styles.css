@@ -38,7 +38,7 @@ body {
 }
 
 .text-theme-primary{
-    background-color: var(--primary-color);
+    color: var(--primary-color);
 }
 
 .bg-secondary-theme{
