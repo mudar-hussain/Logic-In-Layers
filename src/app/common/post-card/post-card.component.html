@@ -1,14 +1,14 @@
 
-<div class="card shadow-effect">
-    <img src="https://pixels.com/images/overview/homeDecor/throwPillows002.jpg" alt="post-image" class="card-img-top">
+<div class="card shadow-effect" *ngIf="postData">
+    <img src="{{ postData.postImgPath }}" alt="post-image" class="card-img-top">
 
     <div class="card-body">
-        <small class="bg-light text-danger text-center"> DSA </small>
+        <small class="bg-light text-danger text-center"> {{ postData.category.category }} </small>
         <small class="bg-light text-success text-center ml-3"> Featured </small>
-        <small class="bg-light text-info text-center ml-3"> Views - 1,244,124 </small>
+        <small class="bg-light text-info text-center ml-3"> Views: {{ postData.views }} </small>
 
-        <h5 class="mt-1"> System Design Roadmap </h5>
-        <p>Creating a robust system design roadmap is paramount for any project aiming for success in today's fast-paced technological landscape. It serves as the blueprint, guiding the development team through the intricate process of crafting a scalable, efficient, and sustainable system. The roadmap, essentially a strategic plan, outlines the steps from conception to implementation, ensuring clarity, alignment, and effective communication across all stakeholders.</p>
-        <small class="bg-light text-warning text-center ml-3"> LAST UPDATED - Mar 20, 2024 </small>
+        <h5 class="mt-1"> {{ postData.title }} </h5>
+        <p>{{ postData.excerpt }}</p>
+        <small class="bg-light text-warning text-center ml-3"> LAST UPDATED - {{ postData.createdAt.toMillis() | date }} </small>
     </div>
 </div>

@@ -3,7 +3,7 @@
     <div class="collapse navbar-collapse justify-content-center">
       <ul class="navbar-nav" *ngFor="let data of categoryList | async">
         <li class="nav-item ml-3">
-          <a href="" class="nav-link"> {{ data.category }} </a>
+          <a class="nav-link" (click)="navigateToCategory(data.category, data.id)"> {{ data.category }} </a>
         </li>
       </ul>
     </div>
