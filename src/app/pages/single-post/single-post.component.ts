@@ -20,6 +20,7 @@ export class SinglePostComponent implements OnInit{
       this.router.navigate(['']);
     }
     this.loadSimilarPosts();
+    this.postService.countViews(this.postData.id);
     console.log(this.postData);
   }
 
@@ -32,6 +33,7 @@ export class SinglePostComponent implements OnInit{
             this.router.navigate(['']);
           }
           this.loadSimilarPosts();
+          this.postService.countViews(this.postData.id);
           console.log(this.postData);
         }
       })

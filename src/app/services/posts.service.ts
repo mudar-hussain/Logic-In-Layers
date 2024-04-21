@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collection, collectionData, doc, getDoc, getFirestore, limit, orderBy, query, where } from '@angular/fire/firestore';
+import { Firestore, collection, collectionData, doc, getDoc, getFirestore, increment, limit, orderBy, query, updateDoc, where } from '@angular/fire/firestore';
 import { Storage, getDownloadURL, ref } from '@angular/fire/storage';
 import { environment } from 'src/environments/environment.prod';
 
@@ -58,5 +58,17 @@ export class PostsService {
     return collectionData(categoryPostsQuery, { idField : 'id' });
   }
 
-
+  countViews( postId: string) {
+    const postInstance = doc(this.firestore, 'posts', postId);
+    const viewsCount = {
+      views: increment(1)
+    }
+    updateDoc(postInstance, viewsCount)
+      .then(() => {
+        console.log("count incremented by 1");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 }
