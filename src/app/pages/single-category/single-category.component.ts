@@ -16,8 +16,8 @@ export class SingleCategoryComponent implements OnInit{
   categoryPostList!: Observable<any>;
 
   constructor(private router: Router, private postService: PostsService){
-    // this.category = this.router.getCurrentNavigation()?.extras.state?.['category'];
-    // console.log(this.category);
+    this.category = this.router.getCurrentNavigation()?.extras.state?.['category'];
+    console.log(this.category);
 }
 
   ngOnInit(): void {
