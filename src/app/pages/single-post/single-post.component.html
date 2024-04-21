@@ -29,9 +29,9 @@
     </div>
     
     <div class="col-md-3">
-        <app-post-card></app-post-card>
-        <app-post-card></app-post-card>
-        <app-post-card></app-post-card>
+      <div *ngFor="let similarPost of similarPostsList | async">
+        <app-post-card [postData]="similarPost"></app-post-card>
+      </div>
     </div>
   </div>
 </div>

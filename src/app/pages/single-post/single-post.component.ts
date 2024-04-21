@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { Post } from 'src/app/models/post';
+import { PostsService } from 'src/app/services/posts.service';
 
 @Component({
   selector: 'app-single-post',
@@ -10,12 +12,14 @@ import { Post } from 'src/app/models/post';
 export class SinglePostComponent implements OnInit{
 
   postData!: Post
+  similarPostsList!: Observable<any>
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private postService: PostsService) {
     this.postData = this.router.getCurrentNavigation()?.extras.state?.['postData'];
     if (!this.postData) {
       this.router.navigate(['']);
     }
+    this.loadSimilarPosts();
     console.log(this.postData);
   }
 
@@ -27,9 +31,14 @@ export class SinglePostComponent implements OnInit{
           if (!this.postData) {
             this.router.navigate(['']);
           }
+          this.loadSimilarPosts();
           console.log(this.postData);
         }
       })
+  }
+
+  loadSimilarPosts(){
+    this.similarPostsList = this.postService.getTopPostsByCategory(this.postData.category.categoryId, 4);
   }
 
 }

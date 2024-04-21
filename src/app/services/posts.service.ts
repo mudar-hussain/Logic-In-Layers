@@ -52,5 +52,11 @@ export class PostsService {
     return collectionData(categoryPostsQuery, { idField : 'id' });
   }
 
+  getTopPostsByCategory(categoryId: string, noOfPosts: number){
+    const postInstance = collection(this.firestore, 'posts');
+    const categoryPostsQuery = query(postInstance, where('category.categoryId', '==', categoryId), orderBy('createdAt', 'desc'), limit(noOfPosts));
+    return collectionData(categoryPostsQuery, { idField : 'id' });
+  }
+
 
 }
