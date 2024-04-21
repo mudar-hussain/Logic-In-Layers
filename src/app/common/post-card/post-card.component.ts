@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Post } from 'src/app/models/post';
 
 @Component({
@@ -10,10 +11,16 @@ export class PostCardComponent implements OnInit{
 
   @Input() postData!: Post;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
       console.log(this.postData);
+  }
+  
+  navigateToPost() {
+    this.router.navigate(['/post', this.postData.title], { state: { 
+      postData: this.postData,
+     }, });
   }
 
 

@@ -13,5 +13,6 @@ export interface Post {
     isFeatured: boolean,
     views: number,
     status: string,
-    createdAt: Timestamp
+    createdAt: Timestamp,
+    id: string
 }

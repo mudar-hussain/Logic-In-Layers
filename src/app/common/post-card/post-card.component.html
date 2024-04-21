@@ -1,5 +1,5 @@
 
-<div class="card shadow-effect" *ngIf="postData">
+<div class="card shadow-effect" *ngIf="postData" (click)="navigateToPost()">
     <img src="{{ postData.postImgPath }}" alt="post-image" class="card-img-top">
 
     <div class="card-body">

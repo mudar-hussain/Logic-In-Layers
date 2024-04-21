@@ -17,6 +17,10 @@ export class SingleCategoryComponent implements OnInit{
 
   constructor(private router: Router, private postService: PostsService){
     this.category = this.router.getCurrentNavigation()?.extras.state?.['category'];
+    
+    if (!this.category) {
+      this.router.navigate(['']);
+    }
     console.log(this.category);
 }
 
@@ -25,6 +29,9 @@ export class SingleCategoryComponent implements OnInit{
       if (event instanceof NavigationStart) {
         const extras = (event as NavigationStart).navigationTrigger === 'popstate' ? null : this.router.getCurrentNavigation()?.extras;
         this.category = extras?.state?.['category'] || null;
+        if (!this.category) {
+          this.router.navigate(['']);
+        }
         this.categoryPostList = this.postService.getAllPostsByCategory(this.category.categoryId);
         console.log(this.category);
       }

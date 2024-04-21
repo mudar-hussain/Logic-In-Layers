@@ -3,30 +3,25 @@
     <div class="col-md-9">
       <div class="card shadow-effect">
         <img
-          src="https://images.pexels.com/photos/1670977/pexels-photo-1670977.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          src="{{ postData.postImgPath }}"
           alt=""
           class="card-img-top img-fluid"
         />
         <div class="card-body">
-          <small class="bg-light text-danger text-center"> DSA </small>
-          <small class="bg-light text-success text-center ml-2">
+          <small class="bg-light text-danger text-center"> {{ postData.category.category }} </small>
+          <small class="bg-light text-success text-center ml-2" *ngIf="postData.isFeatured">
             Featured
           </small>
           <small class="bg-light text-info text-center ml-2">
-            Views - 1,244,124
+            Views - {{ postData.views }}
           </small>
           <small class="bg-light text-warning text-center ml-2">
-            LAST UPDATED - Mar 20, 2024
+            LAST UPDATED - {{ postData.createdAt.toMillis() | date}}
           </small>
 
-          <h1 class="mt-3 mt-3">System Design Roadmap</h1>
-          <p>
-            Creating a robust system design roadmap is paramount for any project aiming for success in today's fast-paced technological landscape. It serves as the blueprint, guiding the development team through the intricate process of crafting a scalable, efficient, and sustainable system. The roadmap, essentially a strategic plan, outlines the steps from conception to implementation, ensuring clarity, alignment, and effective communication across all stakeholders.
-
-At the outset, the roadmap begins with a comprehensive analysis of the project's requirements, objectives, and constraints. This phase involves extensive research and collaboration with key stakeholders to gain a deep understanding of the business needs and user expectations. By conducting thorough market research and competitive analysis, the team can identify industry trends, best practices, and potential challenges, laying the groundwork for informed decision-making.
-
-Following the initial analysis, the roadmap delves into the conceptualization phase, where the overarching architecture and design principles are formulated. This stage entails brainstorming sessions, whiteboarding exercises, and architectural discussions to explore various design alternatives and trade-offs. The goal is to devise a system architecture that aligns with the project's objectives while accommodating scalability, reliability, and performance requirements.
-          </p>
+          <h1 class="mt-3 mt-3">{{ postData.title }}</h1>
+          <p>{{ postData.excerpt }}</p>
+          <p [innerHTML]=" postData.content "></p>
         </div>
       </div>
       <app-comment-form></app-comment-form>
