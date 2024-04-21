@@ -1,11 +1,14 @@
 import { NgModule, importProvidersFrom } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './common/layouts/header/header.component';
@@ -22,6 +25,7 @@ import { CommentListComponent } from './common/comments/comment-list/comment-lis
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { PostCardComponent } from './common/post-card/post-card.component';
 import { environment } from 'src/environments/environment.prod';
+
 
 @NgModule({
   declarations: [
@@ -42,7 +46,11 @@ import { environment } from 'src/environments/environment.prod';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
+    
   ],
   providers: [
     importProvidersFrom(
