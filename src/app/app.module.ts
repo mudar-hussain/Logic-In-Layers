@@ -20,8 +20,6 @@ import { SinglePostComponent } from './pages/single-post/single-post.component';
 import { TermsAndConditionComponent } from './pages/terms-and-condition/terms-and-condition.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { SubscriptionFormComponent } from './common/subscription-form/subscription-form.component';
-import { CommentFormComponent } from './common/comments/comment-form/comment-form.component';
-import { CommentListComponent } from './common/comments/comment-list/comment-list.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { PostCardComponent } from './common/post-card/post-card.component';
 import { environment } from 'src/environments/environment.prod';
@@ -39,8 +37,6 @@ import { environment } from 'src/environments/environment.prod';
     TermsAndConditionComponent,
     ContactUsComponent,
     SubscriptionFormComponent,
-    CommentFormComponent,
-    CommentListComponent,
     AboutUsComponent,
     PostCardComponent
   ],

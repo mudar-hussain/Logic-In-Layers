@@ -5,3 +5,10 @@ header {
 .site-logo {
     font-size: 2em;
 }
+
+.btn-theme-connect{
+    width: auto;
+    background-color: var(--secondary-color);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
