@@ -1,14 +1,19 @@
 header {
-    height: 100px;
+  height: 100px;
 }
 
 .site-logo {
-    font-size: 2em;
+  font-size: 2em;
 }
 
-.btn-theme-connect{
-    width: auto;
-    background-color: var(--secondary-color);
-    border-color: var(--primary-color);
-    color: var(--primary-color);
+.btn-theme-connect {
+  margin-top: auto;
+  width: auto;
+  background-color: var(--secondary-color);
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.hidden {
+  display: none;
 }
