@@ -1,46 +1,34 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationStart, Router } from '@angular/router';
+import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { Category } from 'src/app/models/category';
+import { Post } from 'src/app/models/post';
 import { PostsService } from 'src/app/services/posts.service';
 
 @Component({
   selector: 'app-single-category',
   templateUrl: './single-category.component.html',
-  styleUrls: ['./single-category.component.css']
+  styleUrls: ['./single-category.component.css'],
 })
-export class SingleCategoryComponent implements OnInit{
-  category!: {
-    categoryId: string;
-    categoryName: string;
-  };
-  categoryPostList!: Observable<any>;
+export class SingleCategoryComponent implements OnInit {
+  category!: Category;
+  categoryPostList!: Post[];
 
-  constructor(private router: Router, private postService: PostsService){
-    this.category = this.router.getCurrentNavigation()?.extras.state?.['category'];
-    
-    if (!this.category) {
-      this.router.navigate(['']);
-    }
-    console.log(this.category);
-}
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private postService: PostsService
+  ) {}
 
   ngOnInit(): void {
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationStart) {
-        const extras = (event as NavigationStart).navigationTrigger === 'popstate' ? null : this.router.getCurrentNavigation()?.extras;
-        this.category = extras?.state?.['category'] || null;
-        if (!this.category) {
-          this.router.navigate(['']);
-        }
-        this.categoryPostList = this.postService.getAllPostsByCategory(this.category.categoryId);
-        console.log(this.category);
-      }
-    })
-      // this.route.params.subscribe(val => {
-      //   this.categoryId = val['id'];
-      // })
-      
-
+    this.route.params.subscribe((params) => {
+      this.category.category = params['categoryName'];
+      this.category.categoryId = params['categoryId'];
+      this.postService
+        .getAllPostsByCategory(this.category.categoryId)
+        .subscribe((postList) => {
+          this.categoryPostList = postList;
+        });
+    });
   }
-
 }

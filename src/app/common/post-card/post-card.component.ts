@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Post } from 'src/app/models/post';
+import { PostsService } from 'src/app/services/posts.service';
 
 @Component({
   selector: 'app-post-card',
@@ -8,13 +9,13 @@ import { Post } from 'src/app/models/post';
   styleUrls: ['./post-card.component.css']
 })
 export class PostCardComponent implements OnInit{
-
+  defaultPostImgPath!: string;
   @Input() postData!: Post;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private postService: PostsService) {}
 
   ngOnInit(): void {
-      console.log(this.postData);
+    this.defaultPostImgPath = this.postService.getDefaultPostImgURL("../../../");
   }
   
   navigateToPost() {

@@ -3,7 +3,9 @@
     <div class="col-md-9">
       <div class="card shadow-effect">
         <img
-          src="{{ postData.postImgPath }}"
+          [src]="
+      postData.postImgPath ? postData.postImgPath : this.defaultPostImgPath
+    "
           alt=""
           class="card-img-top img-fluid"
         />

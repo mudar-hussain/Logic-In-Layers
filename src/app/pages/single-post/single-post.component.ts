@@ -10,7 +10,7 @@ import { PostsService } from 'src/app/services/posts.service';
   styleUrls: ['./single-post.component.css']
 })
 export class SinglePostComponent implements OnInit{
-
+  defaultPostImgPath!: string;
   postData!: Post
   similarPostsList!: Observable<any>
 
@@ -37,6 +37,7 @@ export class SinglePostComponent implements OnInit{
           console.log(this.postData);
         }
       })
+      this.defaultPostImgPath = this.postService.getDefaultPostImgURL("../../../");
   }
 
   loadSimilarPosts(){

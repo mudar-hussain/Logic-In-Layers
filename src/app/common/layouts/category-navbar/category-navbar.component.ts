@@ -17,12 +17,12 @@ export class CategoryNavbarComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.categoryService.getCategories().subscribe(categories => {
+    this.categoryService.getCategories().subscribe((categories) => {
       this.categoryList = categories;
     });
   }
 
   navigateToCategory(categoryName: string, categoryId: string) {
-    this.router.navigate(['/category', categoryName, categoryId]);
+    this.router.navigate(['/category', { categoryName, categoryId }]);
   }
 }

@@ -1,22 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collection, collectionData, doc, getDoc, getFirestore, increment, limit, orderBy, query, updateDoc, where } from '@angular/fire/firestore';
-import { Storage, getDownloadURL, ref } from '@angular/fire/storage';
+import { DocumentData, Firestore, collection, collectionData, doc, getDoc, getFirestore, increment, limit, orderBy, query, updateDoc, where } from '@angular/fire/firestore';
 import { Observable, map } from 'rxjs';
-import { environment } from 'src/environments/environment.prod';
 import { Post } from '../models/post';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostsService {
-  filePath = `${environment.defaultPostImgPath}`;
 
-  constructor(private fireStorage: Storage, private firestore: Firestore) { }
+  constructor(private firestore: Firestore) {}
 
-  getDefaultPostImgURL() {
-    const filePath = `${environment.defaultPostImgPath}`;
-    const storageRef = ref(this.fireStorage, filePath);
-    return getDownloadURL(storageRef);
+  getDefaultPostImgURL(pathPrefix: string) {
+    return pathPrefix + "assets/img/post-placeholder-image.png"
   }
 
   getAllPosts(){
@@ -45,27 +40,8 @@ export class PostsService {
 
   getTopFeaturedPostsCrousel(noOfPosts: number): Observable<Post[]>{
     const postInstance = collection(this.firestore, 'posts');
-    // const featuredPostsQuery = query(postInstance, where('isFeatured', '==', true), orderBy('createdAt', 'desc'), limit(noOfPosts));
-    return collectionData(postInstance, { idField : 'id' }).pipe(
-      map((posts: any[]) => {
-        return posts.map(post => ({
-          title: post.title,
-          permalink: post.permalink,
-          category: {
-              categoryId: post.category.categoryId,
-              category: post.category.category
-          },
-          postImgPath: post.postImgPath,
-          excerpt: post.excerpt,
-          content: post.content,
-          isFeatured: post.isFeatured,
-          views: post.views,
-          status: post.status,
-          createdAt: post.createdAt,
-          id: post.id
-        } as Post))
-      })
-    );
+    const featuredPostsQuery = query(postInstance, where('isFeatured', '==', true), orderBy('createdAt', 'desc'), limit(noOfPosts));
+    return this.mapCollectionDataToPostList(collectionData(featuredPostsQuery, { idField : 'id' }));
   }
 
   getPostById(id: string){
@@ -73,10 +49,10 @@ export class PostsService {
     return getDoc(docRef);
   }
 
-  getAllPostsByCategory(categoryId: string){
+  getAllPostsByCategory(categoryId: string): Observable<Post[]>{
     const postInstance = collection(this.firestore, 'posts');
     const categoryPostsQuery = query(postInstance, where('category.categoryId', '==', categoryId), orderBy('createdAt', 'desc'));
-    return collectionData(categoryPostsQuery, { idField : 'id' });
+    return this.mapCollectionDataToPostList(collectionData(categoryPostsQuery, { idField : 'id' }));
   }
 
   getTopPostsByCategory(categoryId: string, noOfPosts: number){
@@ -97,5 +73,32 @@ export class PostsService {
       .catch((err) => {
         console.log(err);
       });
+  }
+
+  mapCollectionDataToPostList(obsPostList: Observable<DocumentData[]>): Observable<Post[]>{
+    return obsPostList.pipe(
+      map((posts: any[]) => {
+        return posts.map(post => (this.mapToPost(post)))
+      })
+    );
+  }
+
+  mapToPost(post: any): Post {
+    return {
+      title: post.title,
+      permalink: post.permalink,
+      category: {
+          categoryId: post.category.categoryId,
+          category: post.category.category
+      },
+      postImgPath: post.postImgPath,
+      excerpt: post.excerpt,
+      content: post.content,
+      isFeatured: post.isFeatured,
+      views: post.views,
+      status: post.status,
+      createdAt: post.createdAt,
+      id: post.id
+    } as Post
   }
 }
