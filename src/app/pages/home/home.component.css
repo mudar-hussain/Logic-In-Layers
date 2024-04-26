@@ -16,7 +16,7 @@
     content: "";
     grid-area: 1/1;
     margin: 0 0 15px 15px;
-    --c:#0000 calc(100%/3),#046D8B 0 calc(2*100%/3),#0000 0;
+    --c:#0000 calc(100%/3),#04c7fd 0 calc(2*100%/3),#0000 0;
     --c1:linear-gradient(90deg,var(--c));
     --c2:linear-gradient( 0deg,var(--c));
     background: var(--c1),var(--c2),var(--c1),var(--c2);
