@@ -1,14 +1,19 @@
+<div class="card shadow-effect" *ngIf="postData" (click)="navigateToPost()" style="cursor: pointer;">
+  <img src="{{ postData.postImgPath }}" alt="post-image" class="card-img-top" />
 
-<div class="card shadow-effect" *ngIf="postData" (click)="navigateToPost()">
-    <img src="{{ postData.postImgPath }}" alt="post-image" class="card-img-top">
+  <div class="card-body">
+    <small class="bg-light text-danger text-center">
+      {{ postData.category.category }}
+    </small>
+    <small class="bg-light text-success text-center ml-3"> Featured </small>
+    <small class="bg-light text-info text-center ml-3">
+      Views: {{ postData.views }}
+    </small>
 
-    <div class="card-body">
-        <small class="bg-light text-danger text-center"> {{ postData.category.category }} </small>
-        <small class="bg-light text-success text-center ml-3"> Featured </small>
-        <small class="bg-light text-info text-center ml-3"> Views: {{ postData.views }} </small>
-
-        <h5 class="mt-1"> {{ postData.title }} </h5>
-        <p>{{ postData.excerpt }}</p>
-        <small class="bg-light text-warning text-center ml-3"> LAST UPDATED - {{ postData.createdAt.toMillis() | date }} </small>
-    </div>
+    <h5 class="mt-1">{{ postData.title }}</h5>
+    <p>{{ postData.excerpt }}</p>
+    <small class="bg-light text-warning text-center ml-3">
+      LAST UPDATED - {{ postData.createdAt.toMillis() | date }}
+    </small>
+  </div>
 </div>

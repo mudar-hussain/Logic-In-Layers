@@ -23,6 +23,7 @@ import { SubscriptionFormComponent } from './common/subscription-form/subscripti
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { PostCardComponent } from './common/post-card/post-card.component';
 import { environment } from 'src/environments/environment.prod';
+import { FeaturedSectionComponent } from './pages/featured-section/featured-section.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { environment } from 'src/environments/environment.prod';
     ContactUsComponent,
     SubscriptionFormComponent,
     AboutUsComponent,
-    PostCardComponent
+    PostCardComponent,
+    FeaturedSectionComponent
   ],
   imports: [
     BrowserModule,

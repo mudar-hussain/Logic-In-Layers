@@ -1,0 +1,74 @@
+<ng-container *ngIf="this.featuredPostList.length > 0">
+  <div class="row">
+    
+      
+      <div id="carouselExampleIndicators" class="carousel slide">
+		<div class="md-col-12">
+		<button
+        class="carousel-control-prev md-col-2"
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="prev"
+      >
+        <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span> -->
+		<span><i class="fas fa-chevron-circle-left"></i></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+        <div class="carousel-indicators">
+          <ng-container
+            *ngFor="
+              let id of [].constructor(1 + remainingSlides.length);
+              let i = index
+            "
+          >
+            <button
+              type="button"
+              data-bs-target="#carouselExampleIndicators"
+              [attr.data-bs-slide-to]="i"
+              [ngClass]="{ active: i === 0 }"
+              [attr.aria-current]="{ true: i === 0 }"
+              [attr.aria-label]="'Slide ' + (i + 1)"
+            ></button>
+          </ng-container>
+        </div>
+        <div class="carousel-inner md-col-8">
+          <div class="carousel-item active">
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-md-4" *ngFor="let post of firstSlide">
+                  <div class="post-card-carousel">
+                    <app-post-card [postData]="post"></app-post-card>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <ng-container *ngFor="let slide of remainingSlides">
+            <div class="carousel-item">
+              <div class="col-md-12">
+                <div class="row">
+                  <div class="col-md-4" *ngFor="let post of slide">
+                    <div class="post-card-carousel">
+                      <app-post-card [postData]="post"></app-post-card>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+		<button
+			class="carousel-control-next md-col-2"
+			type="button"
+			data-bs-target="#carouselExampleIndicators"
+			data-bs-slide="next"
+		  >
+			<!-- <span class="carousel-control-next-icon" aria-hidden="true"></span> -->
+			<span><i class="fas fa-chevron-circle-right"></i></span>
+			<span class="visually-hidden">Next</span>
+		  </button>
+      </div>
+    </div>
+  </div>
+</ng-container>

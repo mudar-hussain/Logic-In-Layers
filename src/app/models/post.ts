@@ -6,7 +6,7 @@ export interface Post {
     category: {
         categoryId: string,
         category: string
-    }
+    },
     postImgPath: string,
     excerpt: string,
     content: string,

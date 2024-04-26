@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Firestore, collection, collectionData, doc, getDoc, getFirestore, increment, limit, orderBy, query, updateDoc, where } from '@angular/fire/firestore';
 import { Storage, getDownloadURL, ref } from '@angular/fire/storage';
+import { Observable, map } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
+import { Post } from '../models/post';
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +41,31 @@ export class PostsService {
     const postInstance = collection(this.firestore, 'posts');
     const featuredPostsQuery = query(postInstance, where('isFeatured', '==', true), orderBy('createdAt', 'desc'), limit(noOfPosts));
     return collectionData(featuredPostsQuery, { idField : 'id' });
+  }
+
+  getTopFeaturedPostsCrousel(noOfPosts: number): Observable<Post[]>{
+    const postInstance = collection(this.firestore, 'posts');
+    // const featuredPostsQuery = query(postInstance, where('isFeatured', '==', true), orderBy('createdAt', 'desc'), limit(noOfPosts));
+    return collectionData(postInstance, { idField : 'id' }).pipe(
+      map((posts: any[]) => {
+        return posts.map(post => ({
+          title: post.title,
+          permalink: post.permalink,
+          category: {
+              categoryId: post.category.categoryId,
+              category: post.category.category
+          },
+          postImgPath: post.postImgPath,
+          excerpt: post.excerpt,
+          content: post.content,
+          isFeatured: post.isFeatured,
+          views: post.views,
+          status: post.status,
+          createdAt: post.createdAt,
+          id: post.id
+        } as Post))
+      })
+    );
   }
 
   getPostById(id: string){
