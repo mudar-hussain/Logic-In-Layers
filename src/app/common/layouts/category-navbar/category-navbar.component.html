@@ -1,9 +1,9 @@
 <nav class="navbar navbar-expand-lg fixed-top">
   <div class="container">
     <div class="collapse navbar-collapse justify-content-center">
-      <ul class="navbar-nav" *ngFor="let data of categoryList | async">
-        <li class="nav-item ml-3">
-          <a class="nav-link" (click)="navigateToCategory(data.category, data.id)"> {{ data.category }} </a>
+      <ul class="navbar-nav text-center">
+        <li class="nav-item pl-2 pr-2" *ngFor="let category of this.categoryList">
+          <a class="nav-link" (click)="navigateToCategory(category.category, category.categoryId)"> {{ category.category }} </a>
         </li>
       </ul>
     </div>
