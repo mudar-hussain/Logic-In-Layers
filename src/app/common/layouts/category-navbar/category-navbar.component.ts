@@ -17,7 +17,7 @@ export class CategoryNavbarComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.categoryService.getCategories().subscribe((categories) => {
+    this.categoryService.getTopCategories(7).subscribe((categories) => {
       this.categoryList = categories;
     });
   }

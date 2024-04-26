@@ -7,7 +7,7 @@ import { Post } from '../models/post';
   providedIn: 'root'
 })
 export class PostsService {
-
+  postInstance = collection(this.firestore, 'posts');
   constructor(private firestore: Firestore) {}
 
   getDefaultPostImgURL(pathPrefix: string) {
@@ -15,32 +15,27 @@ export class PostsService {
   }
 
   getAllPosts(){
-    const postInstance = collection(this.firestore, 'posts');
-    const postsQuery = query(postInstance, orderBy('createdAt', 'desc'));
+    const postsQuery = query(this.postInstance, orderBy('createdAt', 'desc'));
     return collectionData(postsQuery, { idField : 'id' });
   }
 
-  getTopPosts(noOfPosts: number){
-    const postInstance = collection(this.firestore, 'posts');
-    const postsQuery = query(postInstance, orderBy('createdAt', 'desc'), limit(noOfPosts));
-    return collectionData(postsQuery, { idField : 'id' });
+  getTopPosts(noOfPosts: number): Observable<Post[]>{
+    const postsQuery = query(this.postInstance, orderBy('createdAt', 'desc'), limit(noOfPosts));
+    return this.mapCollectionDataToPostList(collectionData(postsQuery, { idField : 'id' }));
   }
 
   getAllFeaturedPosts(){
-    const postInstance = collection(this.firestore, 'posts');
-    const featuredPostsQuery = query(postInstance, where('isFeatured', '==', true), orderBy('createdAt', 'desc'));
+    const featuredPostsQuery = query(this.postInstance, where('isFeatured', '==', true), orderBy('createdAt', 'desc'));
     return collectionData(featuredPostsQuery, { idField : 'id' });
   }
 
-  getTopFeaturedPosts(noOfPosts: number){
-    const postInstance = collection(this.firestore, 'posts');
-    const featuredPostsQuery = query(postInstance, where('isFeatured', '==', true), orderBy('createdAt', 'desc'), limit(noOfPosts));
-    return collectionData(featuredPostsQuery, { idField : 'id' });
+  getTopFeaturedPosts(noOfPosts: number): Observable<Post[]>{
+    const featuredPostsQuery = query(this.postInstance, where('isFeatured', '==', true), orderBy('createdAt', 'desc'), limit(noOfPosts));
+    return this.mapCollectionDataToPostList(collectionData(featuredPostsQuery, { idField : 'id' }));
   }
 
   getTopFeaturedPostsCrousel(noOfPosts: number): Observable<Post[]>{
-    const postInstance = collection(this.firestore, 'posts');
-    const featuredPostsQuery = query(postInstance, where('isFeatured', '==', true), orderBy('createdAt', 'desc'), limit(noOfPosts));
+    const featuredPostsQuery = query(this.postInstance, where('isFeatured', '==', true), orderBy('createdAt', 'desc'), limit(noOfPosts));
     return this.mapCollectionDataToPostList(collectionData(featuredPostsQuery, { idField : 'id' }));
   }
 
