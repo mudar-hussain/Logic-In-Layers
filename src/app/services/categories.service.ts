@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { DocumentData, Firestore, collection, collectionData } from '@angular/fire/firestore';
+import { Firestore, collection, collectionData } from '@angular/fire/firestore';
 import { Observable, map } from 'rxjs';
 import { Category } from '../models/category';
 
@@ -15,11 +15,15 @@ export class CategoriesService {
     return collectionData(categoriesInstance, { idField : 'id' }).pipe(
       map((categories: any[]) => {
         console.log(categories);
-        return categories.map(category => ({
-          categoryId: category.id,
-          category: category.category
-        } as Category))
+        return categories.map(category => (this.mapToCategory(category)))
       })
     );
+  }
+
+  mapToCategory(category: any): Category {
+    return {
+      categoryId: category.id,
+      category: category.category
+    } as Category
   }
 }
