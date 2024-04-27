@@ -11,7 +11,10 @@ import { PostsService } from 'src/app/services/posts.service';
   styleUrls: ['./single-category.component.css'],
 })
 export class SingleCategoryComponent implements OnInit {
-  category!: Category;
+  category: Category = {
+    category: '',
+    categoryId: '',
+  };
   categoryPostList!: Post[];
 
   constructor(

@@ -2,7 +2,7 @@
   <div class="container">
     <div class="collapse navbar-collapse justify-content-center">
       <ul class="navbar-nav text-center">
-        <li class="nav-item pl-2 pr-2" *ngFor="let category of this.categoryList">
+        <li class="nav-item pl-2 pr-2" style="cursor: pointer;" *ngFor="let category of this.categoryList">
           <a class="nav-link" (click)="navigateToCategory(category.category, category.categoryId)"> {{ category.category }} </a>
         </li>
       </ul>

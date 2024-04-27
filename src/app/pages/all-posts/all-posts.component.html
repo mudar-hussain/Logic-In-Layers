@@ -1,1 +1,33 @@
-<p>all-posts works!</p>
+<div class="bg-theme d-flex align-items-center justify-content-center p-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col text-center">
+        <h1 class="text-white">Looking for...</h1>
+        <app-search-bar (searchEmitter)="search($event)"></app-search-bar>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="container mt-5 mb-5">
+  <!-- <div class="col-md-12 text-center mt-5 mb-5">
+      <h2>Latest Posts</h2>
+    </div> -->
+    
+  <div class="d-flex text-right">
+    <h5>{{ this.filteredPostList.length }} results found!</h5>
+  </div>
+  <div class="d-flex justify-content-center align-items-center">
+    <div
+      class="loader"
+      *ngIf="filteredPostList && filteredPostList.length == 0"
+    ></div>
+  </div>
+  <ng-container *ngIf="filteredPostList && filteredPostList.length > 0">
+    <div class="row">
+      <div class="col-md-4 mt-3" *ngFor="let fiteredPost of filteredPostList">
+        <app-post-card [postData]="fiteredPost"></app-post-card>
+      </div>
+    </div>
+  </ng-container>
+</section>

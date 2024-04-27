@@ -9,7 +9,6 @@ export class HeaderComponent implements OnInit {
   isWindow: boolean = window.innerWidth < 770;
   
   ngOnInit(): void {
-    console.log(window.innerWidth);
   }
 
   @HostListener('window:resize', ['$event'])

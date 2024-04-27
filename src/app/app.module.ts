@@ -25,6 +25,7 @@ import { PostCardComponent } from './common/post-card/post-card.component';
 import { environment } from 'src/environments/environment.prod';
 import { FeaturedSectionComponent } from './pages/featured-section/featured-section.component';
 import { AllPostsComponent } from './pages/all-posts/all-posts.component';
+import { SearchBarComponent } from './common/search-bar/search-bar.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { AllPostsComponent } from './pages/all-posts/all-posts.component';
     AboutUsComponent,
     PostCardComponent,
     FeaturedSectionComponent,
-    AllPostsComponent
+    AllPostsComponent,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule,

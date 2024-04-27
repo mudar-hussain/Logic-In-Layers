@@ -23,6 +23,6 @@ export class CategoryNavbarComponent implements OnInit {
   }
 
   navigateToCategory(categoryName: string, categoryId: string) {
-    this.router.navigate(['/category', { categoryName, categoryId }]);
+    this.router.navigate(['/category', categoryName, categoryId ]);
   }
 }
