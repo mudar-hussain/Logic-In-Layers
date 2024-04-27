@@ -14,5 +14,6 @@ export interface Post {
     views: number,
     status: string,
     createdAt: Timestamp,
-    id: string
+    id: string,
+    newsletterUrl: string
 }

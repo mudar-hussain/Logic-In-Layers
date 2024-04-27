@@ -1,6 +1,6 @@
-.card {
+.container {
     /* max-width: 500px; */
-    /* height: 400px; */
+    height: 1000px;
 }
 
 .card-img-top {

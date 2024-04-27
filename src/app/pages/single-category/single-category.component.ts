@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 import { Category } from 'src/app/models/category';
 import { Post } from 'src/app/models/post';
 import { PostsService } from 'src/app/services/posts.service';
@@ -18,7 +17,6 @@ export class SingleCategoryComponent implements OnInit {
   categoryPostList!: Post[];
 
   constructor(
-    private router: Router,
     private route: ActivatedRoute,
     private postService: PostsService
   ) {}

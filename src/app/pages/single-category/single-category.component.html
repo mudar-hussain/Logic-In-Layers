@@ -1,16 +1,16 @@
 <ng-container *ngIf="this.category">
 
-<div class="bg-theme p-5">
-  <div class="container">
-    <h1 class="text-white">{{ this.category.category }}</h1>
-  </div>
-</div>
-
-<div class="container mt-5 mb-5">
-  <div class="row">
-    <div class="col-md-4 mb-3" *ngFor="let categoryPost of categoryPostList">
-      <app-post-card [postData]="categoryPost"></app-post-card>
+  <div class="bg-theme p-5">
+    <div class="container">
+      <h1 class="text-white">{{ this.category.category }}</h1>
     </div>
   </div>
-</div>
+
+  <div class="container mt-5 mb-5">
+    <div class="row">
+      <div class="col-md-4 mb-3" *ngFor="let categoryPost of categoryPostList">
+        <app-post-card [postData]="categoryPost"></app-post-card>
+      </div>
+    </div>
+  </div>
 </ng-container>

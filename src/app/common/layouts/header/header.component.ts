@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
+import { PostsService } from 'src/app/services/posts.service';
 
 @Component({
   selector: 'app-header',
@@ -6,9 +7,13 @@ import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
+  newsletterUrl: string = "#";
   isWindow: boolean = window.innerWidth < 770;
+
+  constructor(private postService: PostsService){}
   
   ngOnInit(): void {
+    this.newsletterUrl = this.postService.getNewsletterURL();
   }
 
   @HostListener('window:resize', ['$event'])

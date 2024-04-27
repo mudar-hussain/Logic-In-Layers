@@ -3,32 +3,42 @@
     <div class="row">
       <div class="col-md-9">
         <div class="card shadow-effect">
-          <img
-            [src]="
+          <img [src]="
               postData.postImgPath
                 ? postData.postImgPath
                 : this.defaultPostImgPath
-            "
-            alt=""
-            class="card-img-top img-fluid"
-          />
+            " alt="" class="card-img-top img-fluid" />
           <div class="card-body">
-            <small class="bg-light text-danger text-center">
-              {{ postData.category.category }}
-            </small>
-            <small
-              class="bg-light text-success text-center ml-2"
-              *ngIf="postData.isFeatured"
-            >
-              Featured
-            </small>
-            <small class="bg-light text-info text-center ml-2">
-              Views - {{ postData.views }}
-            </small>
-            <small class="bg-light text-warning text-center ml-2">
-              LAST UPDATED - {{ postData.createdAt.toMillis() | date }}
-            </small>
-
+            <div class="container">
+              <div class="row">
+                <div class="col">
+                  <span class="bg-light text-danger text-left">
+                    {{ postData.category.category }}
+                  </span>
+                  <span class="bg-light text-success text-left ml-2" *ngIf="postData.isFeatured">
+                    Featured
+                  </span>
+                  <span class="bg-light text-info text-left ml-2" style="font-size: larger">
+                    Views - {{ postData.views }}
+                  </span>
+                  <span class="bg-light text-warning text-left ml-2" style="font-size: larger">
+                    Updated on - {{ postData.createdAt.toMillis() | date }}
+                  </span>
+                </div>
+                <div class="col-auto">
+                  <a target="_blank" [href]="
+                      postData.newsletterUrl &&
+                      postData.newsletterUrl.length > 0
+                        ? postData.newsletterUrl
+                        : this.newsletterUrl
+                    ">
+                    <button class="btn btn-theme-connect">
+                      <span>Newsletter <i class="fas fa-external-link-alt"></i></span>
+                    </button>
+                  </a>
+                </div>
+              </div>
+            </div>
             <h1 class="mt-3 mt-3">{{ postData.title }}</h1>
             <p>{{ postData.excerpt }}</p>
             <p [innerHTML]="postData.content"></p>

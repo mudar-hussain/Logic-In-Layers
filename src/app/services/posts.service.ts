@@ -16,21 +16,36 @@ import {
 } from '@angular/fire/firestore';
 import { Observable, map } from 'rxjs';
 import { Post } from '../models/post';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PostsService {
+  defaultPostImgPath: string = environment.defaultPostImgPath;
+  newsletterUrl: string = environment.newsletterUrl;
+  linkedinProfileUrl: string = environment.linkedinProfileUrl;
   postInstance = collection(this.firestore, 'posts');
+
   constructor(private firestore: Firestore) {}
 
   getDefaultPostImgURL(pathPrefix: string) {
-    return pathPrefix + 'assets/img/post-placeholder-image.png';
+    return pathPrefix + this.defaultPostImgPath;
+  }
+
+  getNewsletterURL() {
+    return this.newsletterUrl;
+  }
+
+  getlinkedinProfileURL() {
+    return this.linkedinProfileUrl;
   }
 
   getAllPosts(): Observable<Post[]> {
     const postsQuery = query(this.postInstance, orderBy('createdAt', 'desc'));
-    return this.mapCollectionDataToPostList(collectionData(postsQuery, { idField: 'id' }));
+    return this.mapCollectionDataToPostList(
+      collectionData(postsQuery, { idField: 'id' })
+    );
   }
 
   getTopPosts(noOfPosts: number): Observable<Post[]> {
@@ -79,15 +94,18 @@ export class PostsService {
 
   getPostById(id: string) {
     const docRef = doc(getFirestore(), 'posts', id);
-    return getDoc(docRef).then(docSnapshot => {
-      if(docSnapshot.exists()){
-        return this.mapToPost(docSnapshot.data());
-      } else return null;
-    }).catch(err => {
-      return null;
-    }).finally(() => {
-      return null;
-    });
+    return getDoc(docRef)
+      .then((docSnapshot) => {
+        if (docSnapshot.exists()) {
+          return this.mapToPost(docSnapshot.data());
+        } else return null;
+      })
+      .catch((err) => {
+        return null;
+      })
+      .finally(() => {
+        return null;
+      });
   }
 
   getAllPostsByCategory(categoryId: string): Observable<Post[]> {
@@ -101,14 +119,19 @@ export class PostsService {
     );
   }
 
-  getTopPostsByCategory(categoryId: string, noOfPosts: number): Observable<Post[]> {
+  getTopPostsByCategory(
+    categoryId: string,
+    noOfPosts: number
+  ): Observable<Post[]> {
     const categoryPostsQuery = query(
       this.postInstance,
       where('category.categoryId', '==', categoryId),
       orderBy('createdAt', 'desc'),
       limit(noOfPosts)
     );
-    return this.mapCollectionDataToPostList(collectionData(categoryPostsQuery, { idField: 'id' }));
+    return this.mapCollectionDataToPostList(
+      collectionData(categoryPostsQuery, { idField: 'id' })
+    );
   }
 
   countViews(postId: string) {
@@ -151,6 +174,7 @@ export class PostsService {
       status: post.status,
       createdAt: post.createdAt,
       id: post.id,
+      newsletterUrl: post.newsletterUrl,
     } as Post;
   }
 }

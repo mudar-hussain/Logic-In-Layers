@@ -1,16 +1,7 @@
-<div
-  class="card shadow-effect"
-  *ngIf="postData"
-  (click)="navigateToPost()"
-  style="cursor: pointer"
->
-  <img
-    [src]="
+<div class="card shadow-effect" *ngIf="postData" (click)="navigateToPost()" style="cursor: pointer">
+  <img [src]="
       postData.postImgPath ? postData.postImgPath : this.defaultPostImgPath
-    "
-    alt="post-image"
-    class="card-img-top"
-  />
+    " alt="post-image" class="card-img-top" />
 
   <div class="card-body">
     <small class="bg-light text-danger text-center">

@@ -11,6 +11,7 @@ import { PostsService } from 'src/app/services/posts.service';
 })
 export class SinglePostComponent implements OnInit {
   defaultPostImgPath!: string;
+  newsletterUrl: string = "#";
   postData!: Post;
   similarPostsList!: Post[];
   postId = '';
@@ -38,13 +39,16 @@ export class SinglePostComponent implements OnInit {
       });
     });
 
+    this.newsletterUrl = this.postService.getNewsletterURL();
     this.defaultPostImgPath =
       this.postService.getDefaultPostImgURL('../../../');
   }
 
   loadSimilarPosts() {
-    this.postService.getTopPostsByCategory(this.postData.category.categoryId,4).subscribe(postList => {
-      this.similarPostsList = postList;
-    })
+    this.postService
+      .getTopPostsByCategory(this.postData.category.categoryId, 3)
+      .subscribe((postList) => {
+        this.similarPostsList = postList;
+      });
   }
 }
