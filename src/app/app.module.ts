@@ -17,8 +17,6 @@ import { FooterComponent } from './common/layouts/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
 import { SingleCategoryComponent } from './pages/single-category/single-category.component';
 import { SinglePostComponent } from './pages/single-post/single-post.component';
-import { TermsAndConditionComponent } from './pages/terms-and-condition/terms-and-condition.component';
-import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { SubscriptionFormComponent } from './common/subscription-form/subscription-form.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { PostCardComponent } from './common/post-card/post-card.component';
@@ -37,8 +35,6 @@ import { SearchBarComponent } from './common/search-bar/search-bar.component';
     HomeComponent,
     SingleCategoryComponent,
     SinglePostComponent,
-    TermsAndConditionComponent,
-    ContactUsComponent,
     SubscriptionFormComponent,
     AboutUsComponent,
     PostCardComponent,

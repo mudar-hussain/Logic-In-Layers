@@ -17,12 +17,6 @@ export class CategoriesService {
   categoriesInstance = collection(this.firestore, 'categories');
   constructor(private firestore: Firestore) {}
 
-  getCategories(): Observable<Category[]> {
-    return this.mapCollectionDataToCategoryList(
-      collectionData(this.categoriesInstance, { idField: 'id' })
-    );
-  }
-
   getTopCategories(noOfCategories: number): Observable<Category[]> {
     const categoriesQuery = query(
       this.categoriesInstance,

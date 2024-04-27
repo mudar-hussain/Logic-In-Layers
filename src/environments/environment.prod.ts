@@ -8,8 +8,9 @@ export const environment = {
       messagingSenderId: '848515052978',
       appId: '1:848515052978:web:6f7a91eefbad53937820ab',
     },
-    defaultPostImgPath : 'assets/img/post-placeholder-image.png',
+    defaultPostImgPath: 'assets/img/post-placeholder-image.png',
+    linkedinProfileUrl: 'https://www.linkedin.com/in/mudar-hussain/',
     newsletterUrl: 'https://www.linkedin.com/newsletters/7189975110357790720/',
-    linkedinProfileUrl: 'https://www.linkedin.com/in/mudar-hussain/'
+    githubProfileUrl: 'https://github.com/mudar-hussain/'
   };
   

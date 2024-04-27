@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
+import { ConfigService } from 'src/app/services/config.service';
 import { PostsService } from 'src/app/services/posts.service';
 
 @Component({
@@ -8,12 +9,16 @@ import { PostsService } from 'src/app/services/posts.service';
 })
 export class HeaderComponent implements OnInit {
   newsletterUrl: string = "#";
+  linkedinProfileUrl: string = "#";
+  githubProfileUrl: string = "#";
   isWindow: boolean = window.innerWidth < 770;
 
-  constructor(private postService: PostsService){}
+  constructor(private configService: ConfigService){}
   
   ngOnInit(): void {
-    this.newsletterUrl = this.postService.getNewsletterURL();
+    this.newsletterUrl = this.configService.getNewsletterURL();
+    this.linkedinProfileUrl = this.configService.getLinkedinProfileURL();
+    this.githubProfileUrl = this.configService.getGithubProfileUrl();
   }
 
   @HostListener('window:resize', ['$event'])

@@ -1,3 +1,4 @@
+<div class="container">
 <div class="card shadow-effect" *ngIf="postData" (click)="navigateToPost()" style="cursor: pointer">
   <img [src]="
       postData.postImgPath ? postData.postImgPath : this.defaultPostImgPath
@@ -18,4 +19,5 @@
       LAST UPDATED - {{ postData.createdAt.toMillis() | date }}
     </small>
   </div>
+</div>
 </div>

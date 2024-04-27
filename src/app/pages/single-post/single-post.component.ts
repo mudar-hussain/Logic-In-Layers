@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Post } from 'src/app/models/post';
+import { ConfigService } from 'src/app/services/config.service';
 import { PostsService } from 'src/app/services/posts.service';
 
 @Component({
@@ -10,15 +11,16 @@ import { PostsService } from 'src/app/services/posts.service';
   styleUrls: ['./single-post.component.css'],
 })
 export class SinglePostComponent implements OnInit {
-  defaultPostImgPath!: string;
-  newsletterUrl: string = "#";
+  defaultPostImgPath: string = '#';
+  newsletterUrl: string = '#';
   postData!: Post;
-  similarPostsList!: Post[];
+  similarPostsList: Post[] = [];
   postId = '';
 
   constructor(
     private router: Router,
     private postService: PostsService,
+    private configService: ConfigService,
     private route: ActivatedRoute
   ) {}
 
@@ -38,17 +40,19 @@ export class SinglePostComponent implements OnInit {
         }
       });
     });
-
-    this.newsletterUrl = this.postService.getNewsletterURL();
+    
+    this.newsletterUrl = this.configService.getNewsletterURL();
     this.defaultPostImgPath =
-      this.postService.getDefaultPostImgURL('../../../');
+      this.configService.getDefaultPostImgURL('../../../');
   }
 
   loadSimilarPosts() {
     this.postService
       .getTopPostsByCategory(this.postData.category.categoryId, 3)
       .subscribe((postList) => {
-        this.similarPostsList = postList;
+        this.similarPostsList = postList.filter(
+          (post) => post.id != this.postData.id
+        );
       });
   }
 }

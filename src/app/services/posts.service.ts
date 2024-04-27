@@ -16,30 +16,14 @@ import {
 } from '@angular/fire/firestore';
 import { Observable, map } from 'rxjs';
 import { Post } from '../models/post';
-import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root',
 })
-export class PostsService {
-  defaultPostImgPath: string = environment.defaultPostImgPath;
-  newsletterUrl: string = environment.newsletterUrl;
-  linkedinProfileUrl: string = environment.linkedinProfileUrl;
+export class PostsService{
   postInstance = collection(this.firestore, 'posts');
 
   constructor(private firestore: Firestore) {}
-
-  getDefaultPostImgURL(pathPrefix: string) {
-    return pathPrefix + this.defaultPostImgPath;
-  }
-
-  getNewsletterURL() {
-    return this.newsletterUrl;
-  }
-
-  getlinkedinProfileURL() {
-    return this.linkedinProfileUrl;
-  }
 
   getAllPosts(): Observable<Post[]> {
     const postsQuery = query(this.postInstance, orderBy('createdAt', 'desc'));
