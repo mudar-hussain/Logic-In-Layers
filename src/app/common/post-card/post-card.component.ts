@@ -19,10 +19,6 @@ export class PostCardComponent implements OnInit{
   }
   
   navigateToPost() {
-    this.router.navigate(['/post', this.postData.title], { state: { 
-      postData: this.postData,
-     }, });
+    this.router.navigate(['/post', this.postData.id + "-" + this.postData.title]);
   }
-
-
 }

@@ -11,7 +11,7 @@ import { AllPostsComponent } from './pages/all-posts/all-posts.component';
 const routes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'category/:categoryName/:categoryId', component: SingleCategoryComponent},
-  { path: 'post/:title', component: SinglePostComponent},
+  { path: 'post/:postIdTitle', component: SinglePostComponent},
   { path: 'posts', component: AllPostsComponent},
   { path: 'about', component: AboutUsComponent},
   { path: 'term-conditions', component: TermsAndConditionComponent},

@@ -79,7 +79,15 @@ export class PostsService {
 
   getPostById(id: string) {
     const docRef = doc(getFirestore(), 'posts', id);
-    return getDoc(docRef);
+    return getDoc(docRef).then(docSnapshot => {
+      if(docSnapshot.exists()){
+        return this.mapToPost(docSnapshot.data());
+      } else return null;
+    }).catch(err => {
+      return null;
+    }).finally(() => {
+      return null;
+    });
   }
 
   getAllPostsByCategory(categoryId: string): Observable<Post[]> {
@@ -93,14 +101,14 @@ export class PostsService {
     );
   }
 
-  getTopPostsByCategory(categoryId: string, noOfPosts: number) {
+  getTopPostsByCategory(categoryId: string, noOfPosts: number): Observable<Post[]> {
     const categoryPostsQuery = query(
       this.postInstance,
       where('category.categoryId', '==', categoryId),
       orderBy('createdAt', 'desc'),
       limit(noOfPosts)
     );
-    return collectionData(categoryPostsQuery, { idField: 'id' });
+    return this.mapCollectionDataToPostList(collectionData(categoryPostsQuery, { idField: 'id' }));
   }
 
   countViews(postId: string) {
