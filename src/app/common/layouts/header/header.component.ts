@@ -1,6 +1,5 @@
-import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ConfigService } from 'src/app/services/config.service';
-import { PostsService } from 'src/app/services/posts.service';
 
 @Component({
   selector: 'app-header',

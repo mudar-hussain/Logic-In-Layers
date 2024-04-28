@@ -14,6 +14,13 @@
           'col-md-2 justify-content-end': !isWindow,
           'col-md-3 justify-content-center pt-2': isWindow
         }">
+        <ng-container *ngIf="isWindow">
+          <a target="_blank" href="#">
+            <button class="btn btn-theme-connect mr-2">
+              <span><i class="fas fa-home"></i></span>
+            </button>
+          </a>
+        </ng-container>
         <a target="_blank" href="/posts">
           <button class="btn btn-theme-connect">
             <span><i class="fas fa-search"></i></span>

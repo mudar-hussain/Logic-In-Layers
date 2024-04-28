@@ -1,24 +1,20 @@
-<section class="featured-section">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-12 text-center mt-5 mb-5">
-        <h1 class="text-white">Featured Posts</h1>
-      </div>
-    </div>
-    <div class="d-flex justify-content-center align-items-center">
-      <div class="loader" *ngIf="featuredPostList && featuredPostList.length == 0"></div>
-    </div>
-    <ng-container *ngIf="featuredPostList && featuredPostList.length > 0">
-      <div class="row">
-        <div class="col-md-3 featured-post-card" *ngFor="let featuredPost of featuredPostList">
-          <app-post-card [postData]="featuredPost"></app-post-card>
-        </div>
-      </div>
-    </ng-container>
+<section class="container-fluid featured-section">
+  <div class="col-md-12 text-center mt-5 mb-5">
+    <h1 class="text-white pt-3">Featured Posts</h1>
   </div>
+  <div class="d-flex justify-content-center align-items-center">
+    <div class="loader" *ngIf="featuredPostList && featuredPostList.length == 0"></div>
+  </div>
+  <ng-container *ngIf="featuredPostList && featuredPostList.length > 0">
+    <div class="row">
+      <div class="col-md-4 pb-3" *ngFor="let featuredPost of featuredPostList">
+        <app-post-card [postData]="featuredPost"></app-post-card>
+      </div>
+    </div>
+  </ng-container>
 </section>
 
-<section class="container">
+<section class="container-fluid">
   <div class="col-md-12 text-center mt-5 mb-5">
     <h1>Latest Posts</h1>
   </div>

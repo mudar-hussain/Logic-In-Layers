@@ -55,4 +55,8 @@ export class SinglePostComponent implements OnInit {
         );
       });
   }
+
+  navigateToCategory(categoryName: string, categoryId: string) {
+    this.router.navigate(['/category', categoryName, categoryId ]);
+  }
 }

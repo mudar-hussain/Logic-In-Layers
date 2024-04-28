@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Category } from 'src/app/models/category';
 import { CategoriesService } from 'src/app/services/categories.service';

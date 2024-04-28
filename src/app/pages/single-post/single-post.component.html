@@ -12,7 +12,7 @@
             <div class="container">
               <div class="row">
                 <div class="col">
-                  <span class="bg-light text-danger text-left" style="font-size: larger">
+                  <span class="bg-light text-danger text-left" style="font-size: larger; cursor: pointer;" (click)="navigateToCategory(postData.category.category, postData.category.categoryId)">
                     {{ postData.category.category }}
                   </span>
                   <span class="bg-light text-success text-left ml-2" style="font-size: larger"

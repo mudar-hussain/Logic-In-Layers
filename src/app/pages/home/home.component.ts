@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   constructor(private postService: PostsService) { }
 
   ngOnInit(): void {
-    this.postService.getTopFeaturedPosts(4).subscribe((postList) => {
+    this.postService.getTopFeaturedPosts(3).subscribe((postList) => {
       this.featuredPostList = postList;
     });
     this.postService.getTopPosts(10).subscribe((postList) => {
