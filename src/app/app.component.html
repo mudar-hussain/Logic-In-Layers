@@ -1,9 +1,11 @@
 <!-- <app-featured-section></app-featured-section> -->
-<app-header></app-header>
+<app-header #header></app-header>
 
-<app-category-navbar></app-category-navbar>
+<ng-container *ngIf="!isWindow" class="category-navbar">
+<app-category-navbar #categoryNavbar></app-category-navbar>
+</ng-container>
 
-<div class="app-body pt-4">
+<div class="app-body">
     <router-outlet></router-outlet>
 </div>
 

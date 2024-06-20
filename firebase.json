@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/tech-tonic-tales",
+    "public": "dist/Logic_In_Layers",
     "ignore": [
       "firebase.json",
       "**/.*",

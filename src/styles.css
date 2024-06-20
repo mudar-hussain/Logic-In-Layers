@@ -7,7 +7,7 @@
 
 :root {
     --primary-color: #026467;
-    --secondary-color: #e5f5ea;
+    --secondary-color: aliceblue;;
     --body-text-color: #596392;
     --navbar-footer-color: #f9f9f9;
 }
@@ -32,10 +32,6 @@ body {
 .shadow-effect {
     border: none;
     box-shadow: 0px 0px 33px -10px rgba(71, 114, 254, 0.3);
-}
-
-.bg-theme {
-    background-color: var(--primary-color);
 }
 
 .text-theme-primary{

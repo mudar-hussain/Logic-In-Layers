@@ -13,18 +13,16 @@ export class SubscribersService {
 
   addSubscriber(subscriptionData: Sub, subscriberList: any) {
     if (subscriberList.length > 0) {
-      this.toastr.success('Already Subscribed...!');
-      this.toastr.success('Stay tuned for Awesome blog posts...!');
+      this.toastr.success('Stay tuned for Awesome blog posts.', 'Already Subscribed...!');
       return true;
     } else {
       const subscriptionInstance = collection(this.firestore, 'subscribers');
       return addDoc(subscriptionInstance, subscriptionData).then(() => {
-        this.toastr.success('Thank you for subscribing to our newsletter service');
-        this.toastr.success('Stay tuned for Awesome blog posts...!');
+        this.toastr.success('Thank you for subscribing to our newsletter service.', 'Subscribed...!');
         return true;
       }).catch((error) => {
         console.error(error);
-        this.toastr.error('Something went wrong! Please try again later...');
+        this.toastr.error('Something went wrong! Please try again later...','Oops...');
         return false;
       });
     }

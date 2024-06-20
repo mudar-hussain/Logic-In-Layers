@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Tech_Tonic_Tales": {
+    "Logic_In_Layers": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/tech-tonic-tales",
+            "outputPath": "dist/Logic_In_Layers",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -67,10 +67,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "Tech_Tonic_Tales:build:production"
+              "browserTarget": "Logic_In_Layers:build:production"
             },
             "development": {
-              "browserTarget": "Tech_Tonic_Tales:build:development"
+              "browserTarget": "Logic_In_Layers:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -78,7 +78,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Tech_Tonic_Tales:build"
+            "browserTarget": "Logic_In_Layers:build"
           }
         },
         "test": {

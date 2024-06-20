@@ -1,4 +1,8 @@
+:root {
+    --header-catNav-height: 150px;
+}
+
 .app-body {
-    margin-top: 100px;
+    margin-top: var(--header-catNav-height);
     min-height: 35vh;
 }
