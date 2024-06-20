@@ -1,29 +1,15 @@
-<header class="navbar navbar-expand-lg fixed-top bg-white justify-content-center">
-  <div class="container-fluid">
-    <div class="row col-md-12 d-flex align-items-center justify-content-center">
-      <ng-container *ngIf="!isWindow">
-        <div class="col-md-2 text-left justify-content-start">
+<header class="fixed-top bg-white">
+    <div [ngClass]="{'centered-row': isWindow, 'row': !isWindow}">
+        <div class="" [ngClass]="{'container left': !isWindow}">
           <a href="#" class="btn">
-            <!-- <i class="fas fa-home"></i> -->
-          <img src="../../../../assets/img/logo.png" alt="Logic In Layers" style="width: 100px; height: 100px;">
+          <img src="../../../../assets/img/logo.png" alt="Logic In Layers" style="width: 80px; height: 80px;">
         </a>
         </div>
-      </ng-container>
-      <div class="justify-content-center text-center d-flex align-items-center"
-        [ngClass]="{ 'col-md-8': !isWindow, 'col-md-9': isWindow }">
-        <a [href]="this.newsletterUrl" target="_blank" class="site-logo"> Logic In Layers </a>
+      <div class="" [ngClass]="{'container middle': !isWindow}">
+        <a target="_blank" [href]="this.newsletterUrl" class="site-name"> Logic In Layers </a>
       </div>
-      <div class="text-right d-flex align-items-center" [ngClass]="{
-          'col-md-2 justify-content-end': !isWindow,
-          'col-md-3 justify-content-center pt-2': isWindow
-        }">
-        <ng-container *ngIf="isWindow">
-          <a target="_blank" href="#">
-            <button class="btn btn-theme-connect mr-2">
-              <span><i class="fas fa-home"></i></span>
-            </button>
-          </a>
-        </ng-container>
+      <ng-container *ngIf="!isWindow">
+      <div class="container right">
         <a target="_blank" href="/posts">
           <button class="btn btn-theme-connect">
             <span><i class="fas fa-search"></i></span>
@@ -40,6 +26,6 @@
           </button>
         </a>
       </div>
+      </ng-container>
     </div>
-  </div>
 </header>

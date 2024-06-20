@@ -1,9 +1,14 @@
 header {
   height: 100px;
+  width: 100%
 }
 
-.site-logo {
+.site-name {
   font-size: 2em;
+  padding: 5px 20px;
+  border-radius: 20px;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
 }
 
 .btn-theme-connect {
@@ -16,4 +21,47 @@ header {
 
 .hidden {
   display: none;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding-right: 10px;
+}
+
+.container {
+  flex: 1;
+}
+
+.centered-row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: left;
+  width: 100%;
+}
+
+.left {
+  display: flex;
+  text-align: left;
+  align-items: center;
+}
+
+.middle {
+  text-align: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+}
+
+.right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.right a {
+    text-decoration: none;
 }
