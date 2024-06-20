@@ -7,6 +7,14 @@
     width: 500px;
 }
 
-input[type = text], input[type = email] {
-    width: 100%;
+input[type = email] {
+    width: 400px;
+}
+
+.btn-theme {
+    height: 40px;
+    width: auto;
+    border: none;
+    font-size: 15px;
+    background-color: var(--primary-color);
 }

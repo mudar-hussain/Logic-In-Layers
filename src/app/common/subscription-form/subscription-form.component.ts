@@ -20,7 +20,6 @@ export class SubscriptionFormComponent implements OnInit {
 
   onSubmit( formData: any) {
     const subscriptionData: Sub = {
-      name: formData.name,
       email: formData.email
     }
     firstValueFrom(this.subscriptionService.checkSubscriber(subscriptionData.email)).then(subscriberList => {
