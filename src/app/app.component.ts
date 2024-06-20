@@ -7,7 +7,7 @@ import { AfterViewInit, Component, HostListener } from '@angular/core';
 })
 export class AppComponent implements AfterViewInit {
   title = 'Logic_In_Layers';
-  isWindow: boolean = window.innerWidth < 770;
+  isWindow: boolean = window.innerWidth > 770;
 
   constructor() { }
 
@@ -21,15 +21,15 @@ export class AppComponent implements AfterViewInit {
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
-    this.isWindow = event.target.innerWidth < 770 ? true : false;
+    this.isWindow = event.target.innerWidth > 770 ? true : false;
     this.updateHeaderHeight();
     window.addEventListener('resize', () => this.updateHeaderHeight());
   }
 
   updateHeaderHeight(): void {
-    let newHeight = '150px';
+    let newHeight = '100px';
     if (this.isWindow) {
-      newHeight = '100px';
+      newHeight = '133px';
     }
     document.documentElement.style.setProperty('--header-catNav-height', newHeight);
   }

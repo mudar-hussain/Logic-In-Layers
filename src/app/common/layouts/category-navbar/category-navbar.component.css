@@ -1,8 +1,8 @@
 nav {
     margin-top: 100px;
-    height: 50px;
+    height: 33px;
     background-color: var(--navbar-footer-color);
-    font-size: 15px;
+    font-size: 12px;
 }
 
 .nav-link {

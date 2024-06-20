@@ -10,7 +10,7 @@ export class HeaderComponent implements OnInit {
   newsletterUrl: string = "#";
   linkedinProfileUrl: string = "#";
   githubProfileUrl: string = "#";
-  isWindow: boolean = window.innerWidth < 770;
+  isWindow: boolean = window.innerWidth > 770 ? true : false;
 
   constructor(private configService: ConfigService){}
   
@@ -22,6 +22,6 @@ export class HeaderComponent implements OnInit {
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
-    this.isWindow = event.target.innerWidth < 770 ? true : false;
+    this.isWindow = event.target.innerWidth > 770 ? true : false;
   }
 }
