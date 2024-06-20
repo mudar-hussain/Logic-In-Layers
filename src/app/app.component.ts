@@ -6,7 +6,7 @@ import { AfterViewInit, Component, HostListener } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements AfterViewInit {
-  title = 'Logic_In_Layers';
+  title = 'Logic In Layers';
   isWindow: boolean = window.innerWidth > 770;
 
   constructor() { }
