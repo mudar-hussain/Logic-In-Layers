@@ -1,20 +1,21 @@
 <header class="fixed-top bg-white">
-    <div [ngClass]="{'centered-row': !isWindow, 'row': isWindow}">
-        <div class="" [ngClass]="{'container left': isWindow}">
-          <a href="#" class="btn">
-          <img src="../../../../assets/img/logo.png" alt="Logic In Layers" style="width: 80px; height: 80px;">
-        </a>
-        </div>
-      <div class="" [ngClass]="{'container middle': isWindow}">
-        <a target="_blank" [href]="this.newsletterUrl" class="site-name"> Logic In Layers </a>
-      </div>
+  <div [ngClass]="{'centered-row': !isWindow, 'row': isWindow}">
+    <div [ngClass]="{'container left': isWindow}">
+      <a href="#" class="btn">
+        <img src="../../../../assets/img/logo.png" alt="Logic In Layers" style="width: 80px; height: 80px;">
+      </a>
+    </div>
+    <div [ngClass]="{'container middle': isWindow}">
+      <a target="_blank" [href]="this.newsletterUrl" class="site-name"> Logic In Layers </a>
+    </div>
+    <div class="container right">
+      <a target="_blank" href="/posts">
+        <button class="btn btn-theme-connect">
+          <span><i class="fas fa-search"></i></span>
+        </button>
+      </a>
+
       <ng-container *ngIf="isWindow">
-      <div class="container right">
-        <a target="_blank" href="/posts">
-          <button class="btn btn-theme-connect">
-            <span><i class="fas fa-search"></i></span>
-          </button>
-        </a>
         <a target="_blank" [href]="this.githubProfileUrl">
           <button class="btn btn-theme-connect ml-2">
             <span><i class="fab fa-github"></i></span>
@@ -25,7 +26,7 @@
             <span><i class="fab fa-linkedin-in"></i></span>
           </button>
         </a>
-      </div>
       </ng-container>
     </div>
+  </div>
 </header>
