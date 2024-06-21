@@ -1,5 +1,5 @@
 <div class="container">
-<div class="card shadow-effect" *ngIf="postData" (click)="navigateToPost()" style="cursor: pointer">
+<div class="card card-outline shadow-effect" *ngIf="postData" (click)="navigateToPost()" style="cursor: pointer">
   <img [src]="
       postData.postImgPath ? postData.postImgPath : this.defaultPostImgPath
     " alt="post-image" class="card-img-top" />
@@ -8,16 +8,13 @@
     <small class="bg-light text-danger text-center">
       {{ postData.category.category }}
     </small>
-    <small class="bg-light text-success text-center ml-3"> Featured </small>
     <small class="bg-light text-info text-center ml-3">
       Views: {{ postData.views }}
     </small>
 
     <h5 class="mt-1">{{ postData.title }}</h5>
     <p>{{ postData.excerpt }}</p>
-    <small class="bg-light text-warning text-center ml-3">
-      LAST UPDATED - {{ postData.createdAt.toMillis() | date }}
-    </small>
+    <p class="btn btn-custom-outline">Explore -→</p>
   </div>
 </div>
 </div>

@@ -21,7 +21,6 @@ import { SubscriptionFormComponent } from './common/subscription-form/subscripti
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { PostCardComponent } from './common/post-card/post-card.component';
 import { environment } from 'src/environments/environment.prod';
-import { FeaturedSectionComponent } from './pages/featured-section/featured-section.component';
 import { AllPostsComponent } from './pages/all-posts/all-posts.component';
 import { SearchBarComponent } from './common/search-bar/search-bar.component';
 
@@ -38,7 +37,6 @@ import { SearchBarComponent } from './common/search-bar/search-bar.component';
     SubscriptionFormComponent,
     AboutUsComponent,
     PostCardComponent,
-    FeaturedSectionComponent,
     AllPostsComponent,
     SearchBarComponent
   ],

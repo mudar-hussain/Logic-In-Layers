@@ -10,6 +10,7 @@
     --secondary-color: aliceblue;;
     --body-text-color: #596392;
     --navbar-footer-color: #f9f9f9;
+    --loader-border-color: #04c7fd;
 }
 
 body {

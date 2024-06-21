@@ -1,11 +1,8 @@
 .featured-section {
-    padding-left: 20px;
-    padding-right: 20px;
     padding-bottom: 20px;
     background-color: var(--primary-color);
 }
 
-/* HTML: <div class="loader"></div> */
 .loader {
     width: 50px;
     aspect-ratio: 1;
