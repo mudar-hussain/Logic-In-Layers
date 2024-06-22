@@ -50,3 +50,8 @@ input[type = text], input[type = email] {
     font-size: 15px;
     background-color: var(--primary-color);
 }
+
+.bg-theme {
+    padding-bottom: 20px;
+    background-color: var(--primary-color);
+  }

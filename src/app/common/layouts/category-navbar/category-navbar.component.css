@@ -1,10 +1,10 @@
 nav {
-    margin-top: 100px;
-    height: 33px;
-    background-color: var(--navbar-footer-color);
-    font-size: 12px;
+  margin-top: 100px;
+  height: 33px;
+  background-color: var(--navbar-footer-color);
+  font-size: 12px;
 }
 
 .nav-link {
-    text-transform: uppercase;
+  text-transform: uppercase;
 }

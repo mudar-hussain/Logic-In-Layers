@@ -14,8 +14,9 @@
   <div class="d-flex text-right">
     <h5>{{ this.filteredPostList.length }} results found!</h5>
   </div>
-  <div class="d-flex justify-content-center align-items-center">
-    <div class="loader" *ngIf="filteredPostList && filteredPostList.length == 0"></div>
+  <div class="d-flex justify-content-center align-items-center mt-2"
+    *ngIf="filteredPostList && filteredPostList.length == 0">
+    <div class="loader"></div>
   </div>
   <ng-container *ngIf="filteredPostList && filteredPostList.length > 0">
     <div class="row">
