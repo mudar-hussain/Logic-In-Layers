@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Logic_In_Layers": {
+    "logicinlayers": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/Logic_In_Layers",
+            "outputPath": "dist/logicinlayers",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -67,10 +67,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "Logic_In_Layers:build:production"
+              "browserTarget": "logicinlayers:build:production"
             },
             "development": {
-              "browserTarget": "Logic_In_Layers:build:development"
+              "browserTarget": "logicinlayers:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -78,7 +78,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Logic_In_Layers:build"
+            "browserTarget": "logicinlayers:build"
           }
         },
         "test": {

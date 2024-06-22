@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/Logic_In_Layers",
+    "public": "dist/logicinlayers",
     "ignore": [
       "firebase.json",
       "**/.*",
